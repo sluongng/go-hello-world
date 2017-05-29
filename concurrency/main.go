@@ -27,7 +27,7 @@ func main() {
 
 	a := []int{1, 2, 7, -22, 12, 55}
 
-	c := make(chan int)
+	c := make(chan int, 2) // buffer channel which store 2 ints
 
 	go sum(a[:len(a)/2], c)
 	go sum(a[len(a)/2:], c)
@@ -36,5 +36,5 @@ func main() {
 
 	fmt.Println("X is", x)
 	fmt.Println("Y is", y)
-	fmt.Println("Sun is", x + y)
+	fmt.Println("Sum is", x + y)
 }
