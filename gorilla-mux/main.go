@@ -20,23 +20,28 @@ func main() {
 	api := r.PathPrefix("/api/v1").Subrouter()
 
 	//HOME DIRECTORY API
-	api.HandleFunc("/", HomeHandler).
+	api.Path("/").
+		HandlerFunc(HomeHandler).
 		Methods("GET").
 		Name("API V1 Home")
 
 	//COURSES API
-	api.HandleFunc("/courses", CoursesHandler).
+	api.Path("/courses").
+		HandlerFunc(CoursesHandler).
 		Methods("GET", "POST"). // TODO: POST
 		Name("List of courses")
-	api.HandleFunc("/courses/{courseId}", SingleCourseHandler).
+	api.Path("/courses/{courseId}").
+		HandlerFunc(SingleCourseHandler).
 		Methods("GET", "PUT", "DELETE"). // TODO: PUT and DELETE
 		Name("Course's detail")
 
 	//EMPLOYEES API
-	api.HandleFunc("/employees", EmployeesHandler).
+	api.Path("/employees").
+		HandlerFunc(EmployeesHandler).
 		Methods("GET", "POST"). // TODO: POST
 		Name("List of employees")
-	api.HandleFunc("/employees/{employeeId}", SingleEmployeeHandler).
+	api.Path("/employees/{employeeId}").
+		HandlerFunc(SingleEmployeeHandler).
 		Methods("GET", "PUT", "DELETE"). // TODO: PUT and DELETE
 		Name("Employee's detail")
 
