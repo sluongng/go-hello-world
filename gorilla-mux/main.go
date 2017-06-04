@@ -1,42 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
-
-// HomeHandler Simple Testing home function
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "This is HOME")
-}
-
-// CoursesHandler is here
-func CoursesHandler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "This is Many Courses")
-}
-
-// SingleCourseHandler is here
-func SingleCourseHandler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "This is SingleCourseHandler")
-}
-
-// EmployeesHandler is here
-func EmployeesHandler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "This is EmployeesHandler")
-}
-
-// SingleEmployeeHandler is here
-func SingleEmployeeHandler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "This is SingleEmployeeHandler")
-}
 
 func main() {
 	//fmt.Println("HelloWorld")
