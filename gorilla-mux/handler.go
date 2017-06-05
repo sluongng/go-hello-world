@@ -34,7 +34,7 @@ func CourseDetail(w http.ResponseWriter, r *http.Request) {
 	courseID := vars["courseId"]
 
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "Got course with ID: %v\n", courseID)
+	fmt.Fprintf(w, "Viewing course with ID: %v\n", courseID)
 }
 
 // UpdateCourse is here
@@ -75,7 +75,7 @@ func EmployeeDetail(w http.ResponseWriter, r *http.Request) {
 	employeeID := vars["employeeId"]
 
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "Got employee with ID: %v\n", employeeID)
+	fmt.Fprintf(w, "Viewing employee with ID: %v\n", employeeID)
 }
 
 // UpdateEmployee is here
