@@ -33,7 +33,7 @@ func main() {
 	api.Path("/courses").
 		HandlerFunc(CreateCourse).
 		Methods("POST").
-		Name("Create a course")
+		Name("Create new course")
 	api.Path("/courses/{courseId}").
 		HandlerFunc(CourseDetail).
 		Methods("GET").
@@ -55,7 +55,7 @@ func main() {
 	api.Path("/employees").
 		HandlerFunc(CreateEmployee).
 		Methods("POST").
-		Name("List of employees")
+		Name("Create new employees")
 	api.Path("/employees/{employeeId}").
 		HandlerFunc(EmployeeDetail).
 		Methods("GET").
@@ -63,11 +63,11 @@ func main() {
 	api.Path("/employees/{employeeId}").
 		HandlerFunc(UpdateEmployee).
 		Methods("PUT").
-		Name("Employee's detail")
+		Name("Update Employee's detail")
 	api.Path("/employees/{employeeId}").
 		HandlerFunc(DeleteEmployee).
 		Methods("DELETE").
-		Name("Employee's detail")
+		Name("Delete Employee")
 
 	http.Handle("/", r)
 
