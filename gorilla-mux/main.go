@@ -13,9 +13,9 @@ func main() {
 	r := mux.NewRouter()
 
 	//HEALTH CHECK API
-	r.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-	})
+	r.Path("/status").
+			HandlerFunc(HealthCheck).
+			Methods("GET")
 
 	api := r.PathPrefix("/api/v1").Subrouter()
 
