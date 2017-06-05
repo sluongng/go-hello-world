@@ -27,22 +27,46 @@ func main() {
 
 	//COURSES API
 	api.Path("/courses").
-		HandlerFunc(CoursesHandler).
-		Methods("GET", "POST"). // TODO: POST
+		HandlerFunc(CoursesList).
+		Methods("GET").
 		Name("List of courses")
+	api.Path("/courses").
+		HandlerFunc(CreateCourse).
+		Methods("POST").
+		Name("Create a course")
 	api.Path("/courses/{courseId}").
-		HandlerFunc(SingleCourseHandler).
-		Methods("GET", "PUT", "DELETE"). // TODO: PUT and DELETE
+		HandlerFunc(CourseDetail).
+		Methods("GET").
 		Name("Course's detail")
+	api.Path("/courses/{courseId}").
+		HandlerFunc(UpdateCourse).
+		Methods("PUT").
+		Name("Update Course's detail")
+	api.Path("/courses/{courseId}").
+		HandlerFunc(DeleteCourse).
+		Methods("DELETE").
+		Name("Delete Course")
 
 	//EMPLOYEES API
 	api.Path("/employees").
-		HandlerFunc(EmployeesHandler).
-		Methods("GET", "POST"). // TODO: POST
+		HandlerFunc(EmployeesList).
+		Methods("GET").
+		Name("List of employees")
+	api.Path("/employees").
+		HandlerFunc(CreateEmployee).
+		Methods("POST").
 		Name("List of employees")
 	api.Path("/employees/{employeeId}").
-		HandlerFunc(SingleEmployeeHandler).
-		Methods("GET", "PUT", "DELETE"). // TODO: PUT and DELETE
+		HandlerFunc(EmployeeDetail).
+		Methods("GET").
+		Name("Employee's detail")
+	api.Path("/employees/{employeeId}").
+		HandlerFunc(UpdateEmployee).
+		Methods("PUT").
+		Name("Employee's detail")
+	api.Path("/employees/{employeeId}").
+		HandlerFunc(DeleteEmployee).
+		Methods("DELETE").
 		Name("Employee's detail")
 
 	http.Handle("/", r)

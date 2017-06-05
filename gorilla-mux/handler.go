@@ -1,9 +1,11 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
+	"net/http"
+
 	"github.com/gorilla/mux"
+	"github.com/satori/uuid"
 )
 
 // HomeHandler Simple Testing home function
@@ -12,14 +14,22 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "This is HOME")
 }
 
-// CoursesHandler is here
-func CoursesHandler(w http.ResponseWriter, r *http.Request) {
+// CoursesList is here
+func CoursesList(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "This is Many Courses")
+	fmt.Fprintf(w, "This is List of Courses")
 }
 
-// SingleCourseHandler is here
-func SingleCourseHandler(w http.ResponseWriter, r *http.Request) {
+// CreateCourse is here
+func CreateCourse(w http.ResponseWriter, r *http.Request) {
+	courseID := uuid.NewV4()
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "Creating a course with UUID: %v\n", courseID)
+}
+
+// CourseDetail is here
+func CourseDetail(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	courseID := vars["courseId"]
 
@@ -27,17 +37,61 @@ func SingleCourseHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Got course with ID: %v\n", courseID)
 }
 
-// EmployeesHandler is here
-func EmployeesHandler(w http.ResponseWriter, r *http.Request) {
+// UpdateCourse is here
+func UpdateCourse(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	courseID := vars["courseId"]
+
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "This is EmployeesHandler")
+	fmt.Fprintf(w, "Updated course with ID: %v\n", courseID)
 }
 
-// SingleEmployeeHandler is here
-func SingleEmployeeHandler(w http.ResponseWriter, r *http.Request) {
+// DeleteCourse is here
+func DeleteCourse(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	courseID := vars["courseId"]
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "Deleted course with ID: %v\n", courseID)
+}
+
+// EmployeesList is here
+func EmployeesList(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "This is a list of Employees")
+}
+
+// CreateEmployee is here
+func CreateEmployee(w http.ResponseWriter, r *http.Request) {
+	employeeID := uuid.NewV4()
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "Creating an employee with UUID: %v\n", employeeID)
+}
+
+// EmployeeDetail is here
+func EmployeeDetail(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	employeeID := vars["employeeId"]
 
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "Got employee with ID: %v\n", employeeID)
+}
+
+// UpdateEmployee is here
+func UpdateEmployee(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	employeeID := vars["employeeId"]
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "Updated employee with ID: %v\n", employeeID)
+}
+
+// DeleteEmployee is here
+func DeleteEmployee(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	employeeID := vars["employeeId"]
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "Deleted employee with ID: %v\n", employeeID)
 }
