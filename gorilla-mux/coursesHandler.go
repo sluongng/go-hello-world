@@ -10,17 +10,6 @@ import (
 	"github.com/satori/uuid"
 )
 
-// Course struct: Exported fields must capitalize first letter
-type Course struct {
-	ID        uuid.UUID	`json:"Id"`
-	Name      string	`json:"Name"`
-	StartTime time.Time	`json:"StartTime"`
-	EndTime   time.Time	`json:"ExpireTime"`
-}
-
-// Courses struct
-type Courses map[string]*Course
-
 // CoursesList is here
 func CoursesList(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
@@ -39,11 +28,12 @@ func CreateCourse(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "applicaton/json")
 
-	if err := json.NewEncoder(w).Encode(newCourse); err != nil {
+	encoder := json.NewEncoder(w)
+	encoder.SetIndent("", "    ")
+	if err := encoder.Encode(newCourse); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	// fmt.Fprintf(w, "Creating a course with UUID: %v\n", courseID)
 }
 
 // CourseDetail is here
