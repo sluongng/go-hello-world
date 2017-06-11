@@ -6,7 +6,7 @@ services:
       - seccomp:unconfined
     entrypoint: dlv debug app -l 0.0.0.0:2345 --headless=true
     volumes:
-      - .:/opt/go/src/app
+      - ${PWD-.}:/opt/go/src/app
     ports:
       - "2345:2345"
       - "9090:9090"
