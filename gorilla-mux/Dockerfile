@@ -1,4 +1,5 @@
 FROM golang:latest
+MAINTAINER sluongng@gmail.com
 
 ENV GOPATH /opt/go:$GOPATH
 ENV PATH /opt/go/bin:$PATH

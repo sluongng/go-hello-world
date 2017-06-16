@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
-	
-	"github.com/satori/uuid"
+	"net/http"
+
 	"github.com/gorilla/mux"
+	"github.com/satori/uuid"
 )
 
 // EmployeesList is here
