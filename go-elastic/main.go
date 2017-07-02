@@ -1,14 +1,12 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
+	"reflect"
 	"time"
 
 	"golang.org/x/net/context"
-
-	"fmt"
-
-	"encoding/json"
-	"reflect"
 
 	elastic "gopkg.in/olivere/elastic.v5"
 )
